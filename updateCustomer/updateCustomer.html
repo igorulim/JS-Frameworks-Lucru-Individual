@@ -1,0 +1,84 @@
+<div class="container">
+  <h3>Modificare consumător</h3>
+
+  <form ng-submit="handleSubmit()" class="form">
+    <div class="input">
+      <label for="name">Nume, prenume</label>
+      <span class="error" ng-if="formErrors.name"> {{formErrors.name}} </span>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Igor Sirbu"
+        required
+        ng-model="name"
+      />
+    </div>
+    <div class="input">
+      <label for="personalAccount">Contul personal (unic)</label>
+      <span class="error" ng-if="formErrors.personalAccount">
+        {{formErrors.personalAccount}}
+      </span>
+      <input
+        type="text"
+        name="personalAccount"
+        id="personalAccount"
+        placeholder="222/333333"
+        required
+        ng-model="personalAccount"
+      />
+    </div>
+    <div class="input">
+      <label for="postalCode">Codul poștal</label>
+      <span class="error" ng-if="formErrors.postalCode">
+        {{formErrors.postalCode}}
+      </span>
+      <input
+        type="text"
+        name="postalCode"
+        id="postalCode"
+        placeholder="MD-2001 Chisinau"
+        required
+        ng-model="postalCode"
+      />
+    </div>
+    <div class="input">
+      <label for="street">Strada</label>
+      <span class="error" ng-if="formErrors.street">
+        {{formErrors.street}}
+      </span>
+      <input
+        type="text"
+        name="street"
+        id="street"
+        placeholder="Stefan cel Mare"
+        required
+        ng-model="street"
+      />
+    </div>
+    <div class="input">
+      <label for="streetNumber">Numărul Străzii</label>
+      <span class="error" ng-if="formErrors.streetNumber">
+        {{formErrors.streetNumber}}
+      </span>
+      <input
+        type="text"
+        name="streetNumber"
+        id="streetNumber"
+        placeholder="23"
+        required
+        ng-model="streetNumber"
+      />
+    </div>
+    <div class="actions">
+      <span class="error" ng-if="formErrors.hasErrors">
+        Corectați eroriile pentru a continua
+      </span>
+      <button class="submit-btn" type="submit">Modifică</button>
+      <button class="reset-btn" type="reset" ng-click="handleReset()">
+        Golește
+      </button>
+    </div>
+  </form>
+  <p ng-if="result">{{result}}</p>
+</div>

@@ -9,7 +9,6 @@
       <input type="checkbox" ng-model="orderByPayment" />
       crescător/descescător după preț
     </label>
-
     <div class="customer">
       <h4>{{customer.name}}</h4>
 
@@ -40,9 +39,13 @@ total: {{total | currency: 'lei '}}
         >
       </div>
     </div>
-    <div>
-      <button>Modifica Consumator</button>
-      <button>Modifica Facturi</button>
+    <div class="customer-actions">
+      <div>
+        <a ng-href="#!updateCustomer/{{id}}">Modifica Consumator</a>
+        /
+        <a ng-href="#!updateCustomerInvoices/{{id}}">Modifica Facturi</a>
+      </div>
+      <button ng-click="handleCustomerDelete(id)">Șterge</button>
     </div>
   </div>
 

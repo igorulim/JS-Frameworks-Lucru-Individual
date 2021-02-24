@@ -13,4 +13,12 @@ app.config(function ($routeProvider) {
 app.controller('appController', function ($scope) {
   $scope.customers = customers;
   $scope.services = services;
+
+  $scope.setCustomers = (customers) => {
+    $scope.customers = customers;
+  };
+
+  $scope.setServices = (services) => {
+    $scope.services = services;
+  };
 });

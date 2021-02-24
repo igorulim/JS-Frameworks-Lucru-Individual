@@ -34,4 +34,11 @@ angular
     $scope.customer = $scope.customers.find((c) => c.id === $routeParams.id);
     $scope.id = $routeParams.id;
     $scope.total = facturi.total($scope.customer.invoices);
+
+    $scope.handleCustomerDelete = (id) => {
+      const customers = $scope.customers.filter((c) => c.id !== id);
+
+      $scope.setCustomers(customers);
+      $scope.customer = null;
+    };
   });

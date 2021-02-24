@@ -157,3 +157,9 @@ select {
   font-size: 14px;
   color: #ff312e;
 }
+
+.customer-actions {
+  display: grid;
+  gap: 0.875rem;
+  justify-content: start;
+}

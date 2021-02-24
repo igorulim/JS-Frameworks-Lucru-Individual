@@ -1,8 +1,12 @@
 'use strict';
 
-export const validateCustomerForm = (fields, customers) => {
+export const validateCustomerForm = (fields, customers, updater) => {
   const name = validateCustomerName(fields.name);
-  const personalAccount = validateAccount(fields.personalAccount, customers);
+  const personalAccount = validateAccount(
+    fields.personalAccount,
+    customers,
+    updater
+  );
 
   let hasErrors = name || personalAccount ? true : false;
 
@@ -35,7 +39,14 @@ const validateCustomerName = (name) => {
   return '';
 };
 
-const validateAccount = (personalAccount, customers) => {
+const validateAccount = (personalAccount, customers, updater) => {
+  if (
+    updater?.customer &&
+    updater.customer.personalAccount === personalAccount
+  ) {
+    return '';
+  }
+
   if (customers.some((c) => c.personalAccount === personalAccount)) {
     return 'Acest cont deja există';
   }
