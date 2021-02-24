@@ -1,0 +1,51 @@
+<div class="container">
+  <div
+    ng-if="customer"
+    class="customer-container"
+    ng-init="orderByPayment = true"
+  >
+    <h3>Informația despre consumator</h3>
+    <label>
+      <input type="checkbox" ng-model="orderByPayment" />
+      crescător/descescător după preț
+    </label>
+
+    <div class="customer">
+      <h4>{{customer.name}}</h4>
+
+      <pre>
+cod personal {{customer.personalAccount}}
+nr. facturi {{customer.invoices.length}}
+</pre
+      >
+
+      <div ng-if="customer.invoices.length">
+        <ul>
+          <li
+            ng-repeat="i in customer.invoices | orderBy: customer.invoices.payment: orderByPayment | limitTo: 3"
+          >
+            <pre>
+------------------------------
+{{i.service.name}}
+{{i.payment | currency : 'lei '}}
+</pre
+            >
+          </li>
+        </ul>
+        <pre>
+------------------------------
+total: {{total | currency: 'lei '}}
+</pre
+        >
+      </div>
+    </div>
+    <div>
+      <button>Modifica Consumator</button>
+      <button>Modifica Facturi</button>
+    </div>
+  </div>
+
+  <div ng-if="!customer">
+    <p>Consumatorul nu există</p>
+  </div>
+</div>

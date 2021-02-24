@@ -5,19 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <script src="mock.js" type="module" defer></script>
+    <script src="index.js" type="module" defer></script>
+    <script src="home/home.js" type="module" defer></script>
+    <script src="about/about.js" type="module" defer></script>
+    <script src="createCustomer/createCustomer.js" defer></script>
+    <script src="createInvoice/createInvoice.js" defer></script>
+    <script src="customers/customers.js" defer></script>
+    <script src="customer/customer.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Achitari Servicii Comunale</title>
   </head>
   <body>
-    <div ng-app="app">
-      <main>
-        <h1>o/</h1>
-      </main>
+    <div ng-app="app" ng-controller="appController">
+      <header class="app-header">
+        <nav class="app-nav">
+          <ul>
+            <li>
+              <a href="#!home">Acasă</a>
+            </li>
+            <li>
+              <a href="#!about">Despre</a>
+            </li>
+            <li>
+              <a href="#!customers">Consumatori</a>
+            </li>
+            <li>
+              <a href="#!createCustomer">Adăugare consumător</a>
+            </li>
+            <li>
+              <a href="#!createInvoice">Adăugare factură</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="main">
+        <div ng-view></div>
+      </div>
     </div>
-    <script src="index.js"></script>
   </body>
 </html>

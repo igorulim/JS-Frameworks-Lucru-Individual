@@ -1,5 +1,11 @@
 /* reset */
 
+/* pallet 
+
+https://coolors.co/fffffa-ff312e-456990-49beaa-020122
+
+*/
+
 /* Box sizing rules */
 *,
 *::before,
@@ -29,6 +35,7 @@ blockquote,
 dl,
 dd {
   margin: 0;
+  color: #333;
 }
 
 /* Set core body defaults */
@@ -38,6 +45,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: Roboto, Arial, Helvetica, sans-serif;
+  background-color: #fffffa;
 }
 
 /* Remove list styles on ul and ol elements */
@@ -49,6 +57,10 @@ ol {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+a {
+  color: #456990;
 }
 
 /* Make images easier to work with */
@@ -63,4 +75,57 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+/* here we go */
+.app-header {
+  background-color: #020122;
+  padding: 0.875rem 1.75rem;
+}
+
+.app-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+.app-nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.app-nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  margin-top: 1.75rem;
+  padding: 0 1.75rem;
+}
+
+.logo {
+  margin: 3.5rem auto 0;
+  width: 112px;
+}
+
+.customer-list a {
+  text-decoration: none;
+}
+
+.customer-list li {
+  padding: 0.875rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.customer h4 {
+  color: #456990;
+}
+
+.customer pre {
+  margin: 0;
+}
+
+.customer-container {
+  display: grid;
+  gap: 1.75rem;
 }

@@ -1,0 +1,33 @@
+<div class="container">
+  <div ng-show="customers && customers.length">
+    <h3>Lista Consumatorilor</h3>
+    <pre>Total: ({{customers.length}})</pre>
+    <label>
+      caută după nume <br />
+      <input type="text" ng-model="search" />
+    </label>
+
+    <div>
+      <ul class="customer-list">
+        <li ng-repeat="c in customers | filter: {'name': search}">
+          <a ng-href="#!customer/{{c.id}}">
+            <div class="customer">
+              <h4>{{c.name}}</h4>
+
+              <pre>
+cod personal {{c.personalAccount}}
+nr. facturi {{c.invoices.length}}
+</pre
+              >
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div ng-hide="customers && customers.length">
+    <p>Lista consumatorilor este pustie</p>
+    <a href="#!createCustomer">adugă</a>
+  </div>
+</div>
