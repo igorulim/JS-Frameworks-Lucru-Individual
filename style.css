@@ -140,6 +140,11 @@ select {
   display: grid;
 }
 
+.input input,
+.input select {
+  height: 1.75rem;
+}
+
 .actions {
   display: grid;
   grid-template-columns: auto auto;

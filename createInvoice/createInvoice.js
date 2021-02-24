@@ -1,4 +1,6 @@
 'use strict';
+import { getInvoiceId } from '../mock.js';
+import { validateInvoiceForm } from '../validator.js';
 
 angular
   .module('app')
@@ -11,5 +13,45 @@ angular
   })
 
   .controller('createInvoiceController', function ($scope) {
-    console.log('createInvoice controller');
+    $scope.handleSubmit = () => {
+      const {
+        customerId,
+        serviceId,
+        payment,
+        issuedAt,
+        dispatchedAt,
+        dueDate
+      } = $scope;
+
+      $scope.formErrors = validateInvoiceForm(
+        {
+          customerId,
+          serviceId,
+          payment
+        },
+        $scope.customers,
+        $scope.services
+      );
+
+      if (!$scope.formErrors.hasErrors) {
+        const customer = $scope.customers.find((c) => c.id === customerId);
+        const service = $scope.services.find((c) => c.id === serviceId);
+
+        customer.invoices.push({
+          id: getInvoiceId(),
+          payment,
+          service,
+          issuedAt,
+          dispatchedAt,
+          dueDate
+        });
+
+        $scope.result = 'Factura a fost adăugată!';
+      }
+    };
+
+    $scope.handleReset = () => {
+      $scope.formErrors = { hasErrors: false };
+      $scope.result = '';
+    };
   });

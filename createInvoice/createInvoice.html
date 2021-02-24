@@ -1,3 +1,95 @@
-<div>
-  <p>createInvoice</p>
+<div class="container">
+  <h3>Adăugare factură</h3>
+
+  <form ng-submit="handleSubmit()" class="form">
+    <div class="input">
+      <label for="customer">consumator</label>
+      <span class="error" ng-if="formErrors.customerId">
+        {{formErrors.customerId}}
+      </span>
+      <select name="customer" ng-model="customerId" id="customer" required>
+        <option ng-repeat="c in customers" ng-value="c.id">
+          {{c.personalAccount + ' | ' + c.name}}
+        </option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="service">Serviciu</label>
+      <span class="error" ng-if="formErrors.serviceId">
+        {{formErrors.serviceId}}
+      </span>
+      <select name="service" ng-model="serviceId" id="service" required>
+        <option ng-repeat="s in services" ng-value="s.id">{{s.name}}</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="payment">Plata</label>
+      <span class="error" ng-if="formErrors.payment">
+        {{formErrors.payment}}
+      </span>
+      <input
+        type="number"
+        name="payment"
+        id="payment"
+        placeholder="3242.50"
+        required
+        ng-model="payment"
+      />
+    </div>
+    <div class="input">
+      <label for="issuedAt">Emis la</label>
+      <span class="error" ng-if="formErrors.issuedAt">
+        {{formErrors.issuedAt}}
+      </span>
+      <input
+        type="date"
+        name="issuedAt"
+        id="issuedAt"
+        required
+        ng-model="issuedAt"
+      />
+    </div>
+    <div class="input">
+      <label for="dispatchedAt">Expediat la</label>
+      <span class="error" ng-if="formErrors.dispatchedAt">
+        {{formErrors.dispatchedAt}}
+      </span>
+      <input
+        type="date"
+        name="dispatchedAt"
+        id="dispatchedAt"
+        required
+        ng-model="dispatchedAt"
+      />
+    </div>
+    <div class="input">
+      <label for="dueDate">Data limită</label>
+      <span class="error" ng-if="formErrors.dueDate">
+        {{formErrors.dueDate}}
+      </span>
+      <input
+        type="date"
+        name="dueDate"
+        id="dueDate"
+        required
+        ng-model="dueDate"
+      />
+    </div>
+    <div class="actions">
+      <span class="error" ng-if="formErrors.hasErrors">
+        Corectați eroriile pentru a continua
+      </span>
+      <button
+        class="submit-btn"
+        type="submit"
+        ng-disabled="!services.length || !customers.length"
+      >
+        Adaugă
+      </button>
+      <button class="reset-btn" type="reset" ng-click="handleReset()">
+        Anulează
+      </button>
+    </div>
+  </form>
+  <p ng-if="result">{{result}}</p>
 </div>
