@@ -10,7 +10,15 @@ angular
     });
   })
 
+  .directive('about', function () {
+    return {
+      template: `<p>
+        Această aplicație permite, utilizarea, modificarea unor date demo cu tema
+        <strong><i>Achitări servicii comunale</i></strong>
+      </p>`
+    };
+  })
+
   .controller('aboutController', function ($scope) {
     console.log('about controllers');
-    console.log($scope?.services);
   });
