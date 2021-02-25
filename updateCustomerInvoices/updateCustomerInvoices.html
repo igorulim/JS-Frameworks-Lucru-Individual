@@ -1,0 +1,114 @@
+<div class="container">
+  <h3>Modificare Facturi</h3>
+
+  <div class="customer">
+    <h4>{{customer.name}}</h4>
+
+    <pre>
+cod personal {{customer.personalAccount}}
+adresa {{customer.address | addressFormat}}
+nr. facturi {{customer.invoices.length}}
+</pre
+    >
+
+    <div ng-show="!isEmpty">
+      <select
+        name="invoice"
+        ng-model="invoiceId"
+        id="invoice"
+        required
+        ng-change="handleInvoiceChange()"
+      >
+        <option ng-repeat="i in customer.invoices" ng-value="i.id">
+          {{i.id}}
+        </option>
+      </select>
+
+      <form ng-submit="handleSubmit()" class="form">
+        <div class="input">
+          <label for="service">Serviciu</label>
+          <span class="error" ng-if="formErrors.serviceId">
+            {{formErrors.serviceId}}
+          </span>
+          <select name="service" ng-model="serviceId" id="service" required>
+            <option ng-repeat="s in services" ng-value="s.id">
+              {{s.name}}
+            </option>
+          </select>
+        </div>
+        <div class="input">
+          <label for="payment">Plata</label>
+          <span class="error" ng-if="formErrors.payment">
+            {{formErrors.payment}}
+          </span>
+          <input
+            type="number"
+            name="payment"
+            id="payment"
+            placeholder="3242.50"
+            required
+            step=".01"
+            ng-model="payment"
+          />
+        </div>
+        <div class="input">
+          <label for="issuedAt">Emis la</label>
+          <span class="error" ng-if="formErrors.issuedAt">
+            {{formErrors.issuedAt}}
+          </span>
+          <input
+            type="date"
+            name="issuedAt"
+            id="issuedAt"
+            required
+            ng-model="issuedAt"
+          />
+        </div>
+        <div class="input">
+          <label for="dispatchedAt">Expediat la</label>
+          <span class="error" ng-if="formErrors.dispatchedAt">
+            {{formErrors.dispatchedAt}}
+          </span>
+          <input
+            type="date"
+            name="dispatchedAt"
+            id="dispatchedAt"
+            required
+            ng-model="dispatchedAt"
+          />
+        </div>
+        <div class="input">
+          <label for="dueDate">Data limită</label>
+          <span class="error" ng-if="formErrors.dueDate">
+            {{formErrors.dueDate}}
+          </span>
+          <input
+            type="date"
+            name="dueDate"
+            id="dueDate"
+            required
+            ng-model="dueDate"
+          />
+        </div>
+        <div class="actions">
+          <span class="error" ng-if="formErrors.hasErrors">
+            Corectați eroriile pentru a continua
+          </span>
+          <button
+            class="submit-btn"
+            type="submit"
+            ng-disabled="!services.length || !customers.length"
+          >
+            Modifică
+          </button>
+          <button class="reset-btn" ng-click="handleInvoiceDelete(invoiceId)">
+            Șterge
+          </button>
+        </div>
+      </form>
+      <p ng-if="result">{{result}}</p>
+    </div>
+
+    <p ng-show="isEmpty">Nu există facturi</p>
+  </div>
+</div>
